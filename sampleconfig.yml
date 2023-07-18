@@ -1,0 +1,84 @@
+##  Base config Settings: ##
+# Configuration Web interface #
+config_web_interface:
+    enabled: true
+    script: "path/to/script -c config.yml"
+    host: "0.0.0.0"
+    port: 8000
+    username: "admin"
+    password: "admin"
+    https: true
+# Mqtt Config #
+mqtt:
+    enabled: false
+    server:
+        host: "my-mqtt-server.com"
+        port: 1883
+        username: "user"
+        password: "password"
+    topic: "linux_mqtt_bridge_01"
+    full_topic: "%prefix%/%topic%"
+# Telegram Config #
+telegram:
+    enabled: false
+    bot_token: "12345678"
+    channel_id: "Telegram_Talk"
+# Logging Config #
+logging:
+    level: debug
+    rotate_size: "5mb"
+    file: "/var/log/scripts"
+## End Base Config Settings ##
+## Extra Script Config Settings ##
+extra_scripts:
+    trail_cam:
+        script: "/path/to/extra_scripts/script/script.py -c config.yml -s trail_cam"
+        run_frequency: "6h"
+    linux_system_monitor:
+        script: "/path/to/extra_scripts/script2/script2.py -c config.yml -s linux_system_monitor"
+        run_frequency: "15m"
+    env_sensor:
+        script: "/path/to/extra_scripts/script3/script3.py/ -c config.yml -s env_sensor"
+        run_frequency: "5m"
+trail_cam:
+    enabled: true
+    filelist: "./filelist.txt"
+    tmp: "./tmp"
+    target:
+        ble_name: "My BLE Device"
+        ble_mac_addr: ""
+        wifi_name: "My WiFi Network"
+        wifi_password: "password"
+        wifi_interface: "wlan0"
+        api_host: "192.168.1.8"
+        api_port: 80
+        video_stream_port: 8221
+    video_conversion:
+        enabled: false
+        format: "mp4"
+        threads: 1
+    mqtt:
+        topic: "trail_cam_01"
+        full_topic: "%prefix%/%topic%"
+    telegram:
+        bot_token: "12345678"
+        channel_id: "Telegram_cam"
+linux_system_monitor:
+    enabled: true
+    get_cpu_stats: false
+    get_memory_stats: false
+    get_storage_stats: false
+env_sensor:
+    enabled: true
+    temperature:
+        enabled: true
+        sensor_name: "BME680"
+        gpio_pin: ""
+    presence_detection:
+        enabled: true
+        sensor_name: "RCWL0516"
+        gpio_pin: ""
+
+    
+
+

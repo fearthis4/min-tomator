@@ -1,0 +1,12 @@
+[Unit]
+Description=Min-Tomator Automation Service
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/home/min-tomator
+ExecStart=/usr/bin/python3 /opt/home/min-tomator_core.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
